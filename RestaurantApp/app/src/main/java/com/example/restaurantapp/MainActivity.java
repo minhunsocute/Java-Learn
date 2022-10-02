@@ -1,11 +1,15 @@
 package com.example.restaurantapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantapp.Activity.ShowDetailsActivity;
 import com.example.restaurantapp.Adaptor.CategoryAdapter;
 import com.example.restaurantapp.Adaptor.PopularAdapter;
 import com.example.restaurantapp.Domain.CategoryDomain;
@@ -17,12 +21,21 @@ public class MainActivity extends AppCompatActivity {
 private RecyclerView.Adapter adapter, adapter2;
 private RecyclerView recyclerViewCategoryList;
 private  RecyclerView recyclerViewPopularList;
+private ConstraintLayout startBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerViewCategory();
         recyclerViewPopular();
+        startBtn = (ConstraintLayout)  findViewById(R.id.order_btn);
+        startBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View view){
+                startActivity(new Intent(MainActivity.this, ShowDetailsActivity.class));
+            }
+        });
     }
 
     private void recyclerViewCategory(){

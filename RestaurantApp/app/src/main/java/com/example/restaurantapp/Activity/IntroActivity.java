@@ -1,17 +1,17 @@
 package com.example.restaurantapp.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.restaurantapp.MainActivity;
 import com.example.restaurantapp.R;
 
 public class IntroActivity extends AppCompatActivity {
-private ConstraintLayout startBtn;
+    private ConstraintLayout startBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.restaurantapp.Activity.ShowDetailActivity;
+import com.example.restaurantapp.Activity.ShowDetailsActivity;
 import com.example.restaurantapp.Domain.FoodDomain;
 import com.example.restaurantapp.R;
 
@@ -31,7 +31,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
-        int posTemp =position;
+        int positionTemp =position;
         holder.title.setText(foodDomains.get(position).getTitle());
         holder.fee.setText(String.valueOf(foodDomains.get(position).getFee()));
         int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(foodDomains.get(position).getPic(),"drawable", holder.itemView.getContext().getPackageName());
@@ -40,8 +40,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
-//                intent.putExtra("object", foodDomains.get(posTemp));
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailsActivity.class);
+//                intent.putExtra("object", foodDomains.get(positionTemp));
                 holder.itemView.getContext().startActivity(intent);
             }
         });
