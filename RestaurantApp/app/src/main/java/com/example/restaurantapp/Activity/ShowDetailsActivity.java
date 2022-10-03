@@ -30,7 +30,7 @@ public class ShowDetailsActivity extends AppCompatActivity {
         int drawableResourceId = this.getResources().getIdentifier(select.getPic(), "drawable", this.getPackageName());
         picFood.setImageResource(drawableResourceId);
         name.setText(select.getTitle());
-        fee.setText(String.valueOf(select.getFee()));
+        fee.setText(String.format("$ %s", String.valueOf(select.getFee())));
         description.setText(select.getDescription());
         numberOrder.setText(String.valueOf(countOrder));
         plusBtn.setOnClickListener(new View.OnClickListener() {

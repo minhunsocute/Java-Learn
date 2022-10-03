@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restaurantapp.Adaptor.CategoryAdapter;
 import com.example.restaurantapp.Adaptor.PopularAdapter;
+import com.example.restaurantapp.Adaptor.SaleAdapter;
 import com.example.restaurantapp.Domain.CategoryDomain;
 import com.example.restaurantapp.Domain.FoodDomain;
+import com.example.restaurantapp.Domain.SaleDomain;
 import com.example.restaurantapp.R;
 
 import java.util.ArrayList;
@@ -58,9 +60,10 @@ public class HomeFrag extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    private RecyclerView.Adapter adapter, adapter2;
+    private RecyclerView.Adapter adapter, adapter2, adapter3;
     private RecyclerView recyclerViewCategoryList;
-    private  RecyclerView recyclerViewPopularList;
+    private RecyclerView recyclerViewPopularList;
+    private RecyclerView recyclerViewSaleList;
     private ConstraintLayout startBtn;
 
     @Override
@@ -85,6 +88,22 @@ public class HomeFrag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerViewCategory(view);
         recyclerViewPopular(view);
+        recyclerViewSale(view);
+
+    }
+
+    private void recyclerViewSale(View view){
+        Context context = getActivity().getApplicationContext();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        recyclerViewSaleList = (RecyclerView)view.findViewById(R.id.listViewSale);
+        recyclerViewSaleList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<SaleDomain> sales = new ArrayList<>();
+        sales.add(new SaleDomain("pop_1", "Pepperoni pizza", 30.1, 50, "Ok","Italia"));
+        sales.add(new SaleDomain("pop_2", "Cheese Burger", 20.1, 40, "Ok","Germany"));
+        sales.add(new SaleDomain("pop_3", "Vegetable Pizza", 10.1, 30, "Ok","France"));
+        adapter3 = new SaleAdapter(sales);
+        recyclerViewSaleList.setAdapter(adapter3);
 
     }
     private void recyclerViewCategory(View view){

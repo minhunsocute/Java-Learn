@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         navigationView = findViewById(R.id.bottomNavigationBarView);
-        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new ProfileFrag()).commit();
-        navigationView.setSelectedItemId(R.id.nav_profile);
+        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFrag()).commit();
+        navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
