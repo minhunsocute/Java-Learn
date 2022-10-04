@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.restaurantapp.MainActivity;
 import com.example.restaurantapp.R;
 
 public class IntroActivity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class IntroActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View view){
-                startActivity(new Intent(IntroActivity.this, MainActivity.class));
+                startActivity(new Intent(IntroActivity.this, SignInActivity.class));
             }
         });
     }

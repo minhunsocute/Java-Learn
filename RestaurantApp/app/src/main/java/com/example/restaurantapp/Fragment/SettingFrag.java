@@ -1,13 +1,22 @@
 package com.example.restaurantapp.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantapp.Adaptor.CartAdapter;
+import com.example.restaurantapp.Domain.FoodDomain;
 import com.example.restaurantapp.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +55,8 @@ public class SettingFrag extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    private RecyclerView.Adapter adapter;
+    private RecyclerView recyclerViewCartList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +70,28 @@ public class SettingFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_setting, container, false);
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        recyclerViewCart(view);
+    }
+
+    private void recyclerViewCart(View view ) {
+        Context context = getActivity().getApplicationContext();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        recyclerViewCartList = (RecyclerView) view.findViewById(R.id.cartList);
+        recyclerViewCartList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<FoodDomain> foodList = new ArrayList<>();
+        foodList.add(new FoodDomain("Pepperoni pizza","pop_1","slices,mozzerella cheese,fresh oregano, ground black pepper , pizza sauce", 9.78, 0));
+        foodList.add(new FoodDomain("Cheese Burger","pop_2","slices,mozzerella cheese,fresh oregano, ground black pepper , pizza sauce", 8.76, 0));
+        foodList.add(new FoodDomain("Vegetable Pizza","pop_3","slices,mozzerella cheese,fresh oregano, ground black pepper , pizza sauce", 10.78, 0));
+        foodList.add(new FoodDomain("Vegetable Pizza","pop_3","slices,mozzerella cheese,fresh oregano, ground black pepper , pizza sauce", 10.78, 0));
+
+        adapter = new CartAdapter(foodList);
+        recyclerViewCartList.setAdapter(adapter);
     }
 }
